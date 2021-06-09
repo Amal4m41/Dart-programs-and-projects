@@ -1,0 +1,89 @@
+/* Simple Hello, World! program */
+void main(){
+    // var lst=new List(5); //fixed length list
+    
+    // lst[3]="hey";
+    // lst[0]=1;
+    // print(lst);
+    // print(lst.length);
+    
+    // var lst1=new List(); //variable length list
+    // lst1.add(1); 
+    // lst1.add("hello"); 
+    // print(lst1);
+    // print(lst1.length);
+    
+    
+    
+    var lst=new List();
+    lst.add(34);
+    lst.add(2);
+    lst.add(3);
+    lst.add(10);
+    // print(lst);
+    // print(lst.first);
+    // print(lst.last);
+    // print(lst.isEmpty);
+    // print(lst.length);
+    
+    
+    print(get_first(lst));
+    print(get_last(lst));
+    print(reverse(lst));
+    print(single(lst));
+
+    
+}
+void get_first(l)
+{
+    if(check_empty(l))
+    {
+        return "Empty list";
+    }
+    else
+    {
+        return l[0];
+    }
+}
+void get_last(l)
+{
+    if(check_empty(l))
+    {
+        return "Empty list";
+    }
+    else
+    {
+        return l[l.length-1];
+    }
+}
+void check_empty(l)
+{
+    if(l.length==0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+void reverse(l)
+{
+    var reversed_lst=new List();
+    for(var i=l.length-1;i>=0;i--)
+    {
+        reversed_lst.add(l[i]);
+    }
+    return reversed_lst;
+}
+void single(l)
+{
+    if(l.length==1)
+    {
+        return l[0];
+    }
+    else
+    {
+        return false;
+    }
+}

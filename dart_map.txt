@@ -1,0 +1,170 @@
+/* Simple Hello, World! program */
+import 'dart:io';
+
+void main(){
+    // Map()
+//   var data={"Name":"Ram","Email":"ram@gmail.com"};
+//   data["age"]=null;
+//   print(data);
+   
+   
+    var data=new Map();
+   
+   
+    while(true){
+        
+        print("0-Exit\n1-Add new key value pair\n2-Delete using key\n3-Clear Map\n4-Check the length\n5-Check if empty\n6-Get all keys\n7-Get all values\n\nEnter your choice");
+        String choice=stdin.readLineSync();
+        if(choice=="0"){
+            print("Thank you");
+            break;
+        }
+        else if(choice=="1"){
+            print("Enter the key and value : ");
+            String key=stdin.readLineSync();
+            String value=stdin.readLineSync();
+            add_new_value(data,key,value);
+        }
+        else if(choice=="2"){
+            print("Enter the key to be deleted : ");
+            String key=stdin.readLineSync();
+            data.remove(key);
+        }
+        else if(choice=="3"){
+            data.clear();
+        }
+        else if(choice=="4"){
+            print(data.length);
+        }
+        else if(choice=="5"){
+            if(data.length==0)
+            {
+                print("Empty");
+            }
+            else{
+                print("Not empty");
+            }
+        }
+        else if(choice=="6"){
+            print(data.keys);
+        }
+        else if(choice=="7"){
+            print(data.values);
+        }
+        else{
+            print("Entered wrong choice! Please try again");
+        }   
+    }
+}
+
+   
+   
+   
+   
+   
+   
+//   print(data.keys);
+//   print(data.values);
+//   print(data.length);
+//   print(data.isEmpty);
+  
+  
+  
+//   data.forEach((k,v)=>
+//     print("$k:$v"));
+    
+    
+//     // var data=new Map();
+   
+   
+//     // String username = stdin.readLineSync();
+//     // String pwd = stdin.readLineSync();
+    
+//     // data["username"]=username;
+//     // data["password"]=pwd;
+    
+//     // print(data);
+
+
+    // print("Enter the value to be searched : ");
+    // String key=stdin.readLineSync();
+    // String result=search(data,key);
+    // if(result!=null)
+    // {
+    //     print("Found $result");
+    // }
+    // else
+    // {
+    //     print("key not present in map");
+    // }
+    
+
+
+
+
+
+void search(data,key)
+{
+  for(var k in data.keys){
+    if(k==key)
+    {
+        return data[k];
+    }
+  }
+}
+
+void add_new_value(data,key,value)
+{
+    data[key]=value;
+}
+
+// void search(data,key)
+// {
+//   for(var k in data.keys){
+//     if(k==key)
+//     {
+//         return data[k];
+//     }
+//   }
+// }
+
+// void search(data,key)
+// {
+//   for(var k in data.keys){
+//     if(k==key)
+//     {
+//         return data[k];
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

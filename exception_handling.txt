@@ -1,0 +1,242 @@
+Exception Handling:
+ 
+- Exception is basically an event that occurs at run-time or occurs dynamically.
+- This event will make the program terminate abnormally.
+- To avoid this abnormal termination of the program, it is important to handle such events, at run time, and exit the program safely.
+ 
+- Exception Handling handles Run-Time Error.
+- Array Index Out Of Bounds Exception: 
+- FallThroughError: 
+- Divide By Zero Exception: 
+- IOException: 
+ 
+- try: the code that MIGHT generate an exception is written in the try block.
+- catch: the code that will execute what to do if the exception arises.
+- finally: the code that will execute whether the exception arises or not.
+- on: similar to catch block.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/* Simple Hello, World! program */
+void main()
+{
+    int numerator = 10;
+    int denominator = 0;
+
+    int result;
+
+    try
+    {
+        result = numerator ~/ denominator;
+        print("Result: $result");
+    }
+    on IntegerDivisionByZeroException
+    {
+        print("Cannot Divide By Zero Exception Caught");
+    }
+    on Exception
+    {
+        print("some other exception");
+    }
+    finally
+    {
+        print("this is finally");
+    }
+    
+    print("program continue..");
+
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//CUSTOM Exception
+void main()
+{
+    int age = 0;
+
+    int result;
+
+    try
+    {
+        check_age(age);
+        print("Age is Valid");
+    }
+    on IntegerDivisionByZeroException
+    {
+        print("Cannot Divide By Zero Exception Caught");
+    }
+    catch(e){
+        print(e.errMsg());
+    }
+    finally
+    {
+        print("this is finally");
+    }
+    
+    print("program continue..");
+
+}
+
+class AgeIncorrect implements Exception{
+    String errMsg()=> "Invalid Age, age value should be greater than 0";
+}
+
+void check_age(age){
+    if(age<=0){
+        throw new AgeIncorrect();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void check_time( int time )
+{
+    if( time>20 )
+    {
+        throw new Timeout();
+    }
+}
+ 
+void main()
+{
+    int time = 100;
+
+    try
+    {
+        check_time(time);
+        print("Time: $time");
+    }
+    catch( e )
+    {
+        print("Exception Caught!!! Time out.");
+    }
+    finally
+    {
+        print("In the Finally Block");
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exception Handling:
+- Exception means a different kind of an event that arises at run time ( dynamically ) that hampers that execution of the running program.
+- Exceptions terminate the running program abnormally (abruptly)
+- To safely exit after handling this exception is needed to avoid this abnormal termination of the program.
+- Examples of Exception:
+1. Divide by zero.
+2. Invalid Format Exception
+3. Insufficient Memory available.
+4. Index Out of Bounds Exception
+5. ...
+- Building blocks of Exception Handling are:
+1. try block.
+2. catch block.
+3. finally block.
+4. on block.
+- Try Block: The code that MIGHT or has the chance to generate an error runtime is put / encapsulated under this try block.
+- Catch block: When the exception is generated, what to do is specified under this catch block.
+- Finally block: The code under Finally block is executed if the exception occurs or not occurs.
+- on Block: Similar to catch block.
+ 
+- Exceptions can be either Built-In Exceptions or User-Defined Exceptions.
+- Examples of Build-In Exceptions are:
+1. IntegerDivisionByZeroException
+2. FormatException
+3. Timeout Exception
+4. IOException
+- User Defined Exception are the exceptions that are created and defined by the programmer / the user.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Checking a phone number
+class InvalidMobileNumberException implements Exception
+{
+    String error_message() =>"Invalid Mobile Number Exception Caught!";
+}
+ 
+void check_mobile_number( String str )
+{   
+    if( str.length==13 )
+    {
+        if( str[0]=='+' && str[1]=='9' && str[2]=='1' )
+        {
+            for( var i=3; i<str.length; i++ )
+            {
+                if( str[i].contains( new RegExp(r'[0-9]'))==false )
+                {
+                    throw new InvalidMobileNumberException();
+                }
+            }
+        }
+        else
+        {
+            throw new InvalidMobileNumberException();
+        }
+    }
+    else
+    {
+        throw new InvalidMobileNumberException();
+    }
+}
+ 
+
+void main()
+{
+    String mobile_number = "+911234512345";
+
+    try
+    {
+        check_mobile_number( mobile_number );
+        print("Mobile Number is: $mobile_number");
+    }
+    catch(e)
+    {
+        print(e.error_message());
+    }
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Checking if name is starting with an uppercase character.
+
+/*
+Name: RaM
+*/
+ 
+
+class InvalidNameException implements Exception
+{
+    String error_message() =>"Invalid Name Exception Caught!";
+}
+ 
+void check_name( String str )
+{   
+    if( str[0].toUpperCase()!=str[0] )
+    {
+        throw new InvalidNameException();
+    }
+}
+ 
+
+void main()
+{
+    String name = "ram";
+
+    try
+    {
+        check_name( name );
+        print("Name: $name");
+    }
+    catch(e)
+    {
+        print(e.error_message());
+    }
+}
+
